@@ -4,17 +4,22 @@
     padding: 2rem;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(6, minmax(auto, 1fr));
-    grid-template-rows: repeat(6, minmax(auto, 1fr));
+    grid-template-columns: repeat(6, minmax(200px, 1fr));
+    /* grid-template-rows: repeat(6, minmax(auto, 1fr)); */
+}
+@media screen and (min-width: 1400px) {
+    .NotesList {
+        grid-template-columns: repeat(6, minmax(150px, 1fr));
+    }
 }
 @media screen and (max-width: 1400px) {
     .NotesList {
-        grid-template-columns: repeat(5, minmax(auto, 1fr));
+        grid-template-columns: repeat(6, minmax(150px, 1fr));
     }
 }
 @media screen and (max-width: 1200px) {
     .NotesList {
-        grid-template-columns: repeat(4, minmax(auto, 1fr));
+        grid-template-columns: repeat(5, minmax(150px, 1fr));
     }
 }
 
