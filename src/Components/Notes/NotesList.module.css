@@ -4,7 +4,36 @@
     padding: 2rem;
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: repeat(6, minmax(auto,1fr));
+    grid-template-columns: repeat(6, minmax(auto, 1fr));
+    grid-template-rows: repeat(6, minmax(auto, 1fr));
+}
+@media screen and (max-width: 1400px) {
+    .NotesList {
+        grid-template-columns: repeat(5, minmax(auto, 1fr));
+    }
+}
+@media screen and (max-width: 1200px) {
+    .NotesList {
+        grid-template-columns: repeat(4, minmax(auto, 1fr));
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .NotesList {
+        grid-template-columns: repeat(4, minmax(auto, 1fr));
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .NotesList {
+        grid-template-columns: repeat(3, minmax(auto, 1fr));
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .NotesList {
+        grid-template-columns: repeat(2, minmax(auto, 1fr));
+    }
 }
 
 .tips {

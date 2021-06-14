@@ -41,11 +41,6 @@ export const NoteContextProvider = (props) => {
 			id: '0',
 			title: 'New Note',
 			text: 'Add a New Note to Begin!'
-		},
-        {
-			id: '1',
-			title: 'Nesfsfsfsfe',
-			text: 'Adsfsfsf Begin!'
 		}
 	]);
     const [newNoteIsShown, setNewNoteIsShown] = useState(false);
@@ -53,8 +48,7 @@ export const NoteContextProvider = (props) => {
     const [editingId, setEditingId] = useState('');
     const [currentEditingObject, setCurrentEditingObject] = useState({id: '', title: '', text: ''});
     const [AddingWhileSelected, setAddingWhileSelected] = useState(false);
-/****************************************** */
-    const [noteId, setNoteId] = useState(2);
+    const [noteId, setNoteId] = useState(1);
     const [titleInput, setTitleInput] = useState('');
     const [textInput, setTextInput] = useState('');
 
@@ -158,7 +152,7 @@ export const NoteContextProvider = (props) => {
             elem
         );
         setDummyNotes(updatedNotes);
-        setFinishedSwap(true); //neveer sets it to false
+        setFinishedSwap(true); 
         swappingNotes=[];
     }
 
