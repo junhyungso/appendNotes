@@ -2,7 +2,7 @@ import React  from 'react';
 import Modal from '../../UI/Modal';
 import NewOrEditForm from './NewOrEditForm';
 
-const NewNote = (props) => {
+const NewOrEditNote = (props) => {
 
 	return (
         <Modal>
@@ -11,4 +11,4 @@ const NewNote = (props) => {
 	);
 };
 
-export default NewNote;
+export default NewOrEditNote;

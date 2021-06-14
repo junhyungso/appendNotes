@@ -13,17 +13,25 @@ const Note = props => {
 		if (ctx.finishedSwap) {
 			setIsSelected(false);
 		}
-	},[ctx.finishedSwap, ctx.handleSwap]);
-	
-	const editingHandler = props => {
+		if (ctx.AddingWhileSelected) {
+			setIsSelected(false);
+		}
+	// ctx.setFinishedSwap(false);
+	},[ctx.finishedSwap, ctx.handleSwap, ctx.AddingWhileSelected]);
+
+	const editingHandler = () => {
 		ctx.showEditingNote();
 		ctx.currentlyEditingNote(props);
 		ctx.setTitleInput(props.title);
 		ctx.setTextInput(props.text);
 	}
 
-	const selectingHandler = (props) => {
+	const deleteNoteHandler = (event) => {
+		event.stopPropagation();
+		ctx.deleteNote(props.id)
+	}
 
+	const selectingHandler = (props) => {
 		const currentObject = {
 			id: props.id,
 			title: props.title,
@@ -37,16 +45,15 @@ const Note = props => {
 				ctx.handleSwap();
 			}
 		}
-
 	}
 	return (
 		<>
-			<li className={noteClass} onClick={()=>selectingHandler(props)} tabIndex="0">
+			<li className={noteClass} onClick={()=>selectingHandler(props)}>
 				<h3 className={css.title}> {props.title} </h3>
 				<p className={css.text}>	{props.text} </p>
 				<div className={css.buttons}>
-					<button className={css.button} onClick={() => editingHandler(props)}>Edit</button>
-					<button className={css.button} onClick={() => ctx.deleteNote(props.id)}>Delete</button>
+					<button className={css.button} onClick={editingHandler}>Edit</button>
+					<button className={css.button} onClick={deleteNoteHandler}>Delete</button>
 				</div>
 
 			</li>

@@ -8,6 +8,7 @@ const NoteContext = React.createContext({
     updateEditingId: () => {},
     currentEditNote: {},
     finishedSwap: false,
+    setFinishedSwap: ()=> {},
     
     showNewNote: () => {},
     hideNewNote: () => {},
@@ -20,7 +21,8 @@ const NoteContext = React.createContext({
     deleteNote: () => {},
     editNote: () => {},
     swappingNotes: {},
-    // setSwappingNotes: () => {},
+    AddingWhileSelected: false,
+    setAddingWhileSelected: () => {},
 
     noteId: 1,
     setNoteId: () => {},
@@ -50,16 +52,19 @@ export const NoteContextProvider = (props) => {
     const [EditingNoteIsShown, setEditingNoteIsShown] = useState(false);
     const [editingId, setEditingId] = useState('');
     const [currentEditingObject, setCurrentEditingObject] = useState({id: '', title: '', text: ''});
+    const [AddingWhileSelected, setAddingWhileSelected] = useState(false);
 /****************************************** */
     const [noteId, setNoteId] = useState(2);
     const [titleInput, setTitleInput] = useState('');
     const [textInput, setTextInput] = useState('');
 
-    // const [swappingNotes, setSwappingNotes] = useState({});
     let swappingNotes = [];
     const [finishedSwap, setFinishedSwap] = useState(false);
 
     const showNewNoteHandler = () => {
+        if (swappingNotes.length > 0) {
+            setAddingWhileSelected(!AddingWhileSelected);
+        }
         setNewNoteIsShown(true);
       }
     
@@ -153,7 +158,7 @@ export const NoteContextProvider = (props) => {
             elem
         );
         setDummyNotes(updatedNotes);
-        setFinishedSwap(true);
+        setFinishedSwap(true); //neveer sets it to false
         swappingNotes=[];
     }
 
@@ -166,6 +171,7 @@ export const NoteContextProvider = (props) => {
             updateEditingId: setEditingId,
             currentEditNote: currentEditingObject,
             finishedSwap: finishedSwap,
+            setFinishedSwap: setFinishedSwap,
 
             showNewNote: showNewNoteHandler,
             hideNewNote: hideNewNoteHandler,
@@ -178,7 +184,8 @@ export const NoteContextProvider = (props) => {
             deleteNote: deleteNoteHandler,
             editNote: editNoteHandler,
             swappingNotes: swappingNotes,
-            // setSwappingNotes: setSwappingNotes,
+            AddingWhileSelected: AddingWhileSelected,
+            setAddingWhileSelected: setAddingWhileSelected,
 
             noteId: noteId,
             setNoteId: setNoteId,
